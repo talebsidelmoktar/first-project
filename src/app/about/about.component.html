@@ -1,6 +1,6 @@
 <div class="card border-primary">
     <div class="card-header bg-primary text-white">
-     About Component
+        About Component
     </div>
 
     <div class="card-body">
@@ -14,19 +14,42 @@
             <label for="">Message</label>
             <div class="input-group mb-3">
                 <input type="text" [(ngModel)]="comment.message" class="form-control">
-            </div> 
-            <button class="btn btn-primary"(click)="addComment()" [disabled]="newComment">
+            </div>
+            <button class="btn btn-primary" (click)="addComment()" [disabled]="newComment">
                 Add Comment
             </button>
         </div>
-        <div *ngIf="comments.length>0; else noComments">
+        <!--getChar pipe-->
+      <!--   <div>
+            <h1>{{'hello'|getChar:-1}}</h1>
+        </div> -->
+        <div *ngIf="comments.length>0; then listComment else noComments">
+            <h1>hello world</h1>
+        </div>
+        <ng-template #listComment>
             <h3>Messages</h3>
             <ul class="list-group">
-                <li  class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let comment of comments">
-                    {{comment.message}} <span class="badge badge-secondary badge-pill">{{comment.date|date:"HH:mm:ss"}} </span>
-                </li>
+                <ng-container
+                    *ngFor="let comment of comments; let i=index; let isFirst=first; let isLast=last; let isOdd=odd; let isEven=even;">
+                    <li [ngClass]="{'text-success bg-light':isEven, 'impair':isOdd }"
+                        class="list-group-item d-flex justify-content-between align-items-center">
+                        {{i}}#{{isFirst}}#{{isLast}}#{{isEven}}#{{isOdd}}#{{comment.message}} <span
+                            class="badge badge-secondary badge-pill">{{comment.date|date:"HH:mm:ss"}} </span>
+                    </li>
+                    <!--     <li *ngIf="isEven"  
+                         [ngStyle]="{color:colors.even}"
+                        class="list-group-item d-flex justify-content-between align-items-center">
+                        {{i}}#{{isFirst}}#{{isLast}}#{{isEven}}#{{isOdd}}#{{comment.message}} <span class="badge badge-secondary badge-pill">{{comment.date|date:"HH:mm:ss"}} </span>
+                    </li>
+                    <li *ngIf="isOdd"  
+                        [ngStyle]="{color:colors.odd}"
+                        class="list-group-item d-flex justify-content-between align-items-center">
+                        {{i}}#{{isFirst}}#{{isLast}}#{{isEven}}#{{isOdd}}#{{comment.message}} <span class="badge badge-secondary badge-pill">{{comment.date|date:"HH:mm:ss"}} </span>
+                    </li> -->
+                </ng-container>
+
             </ul>
-        </div>
+        </ng-template>
         <ng-template #noComments>
             <p>
                 No Comments

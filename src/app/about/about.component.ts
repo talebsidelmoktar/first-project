@@ -10,10 +10,11 @@ import { Comment } from '../shared/comment';
 export class AboutComponent implements OnInit {
   info :any;
   comment:Comment = new Comment(-1,"",new Date());
-
+  colors={even:"green", odd:"red" };
   comments:Comment[] = [];
   newComment = false;
   constructor(private aboutService:AboutService){}
+
   ngOnInit(): void {
    this.info=this.aboutService.getInfos();
    this.comments=this.aboutService.getAllComment();
