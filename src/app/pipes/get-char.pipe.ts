@@ -15,5 +15,4 @@ export class GetCharPipe implements PipeTransform {
     }
    else return "";
   }
-
 }

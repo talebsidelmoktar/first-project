@@ -27,15 +27,23 @@
             <h1>hello world</h1>
         </div>
         <ng-template #listComment>
+           
             <h3>Messages</h3>
             <ul class="list-group">
                 <ng-container
                     *ngFor="let comment of comments; let i=index; let isFirst=first; let isLast=last; let isOdd=odd; let isEven=even;">
-                    <li [ngClass]="{'text-success bg-light':isEven, 'impair':isOdd }"
+                    <app-comment [comment]="comment" 
+                                 [isFirst]="isFirst"
+                                 [isLast]="isLast"
+                                 [isOdd]="isOdd"
+                                 [isEven]="isOdd"
+                                 [index]="i">
+                    </app-comment>
+                 <!--    <li [ngClass]="{'text-success bg-light':isEven, 'impair':isOdd }"
                         class="list-group-item d-flex justify-content-between align-items-center">
                         {{i}}#{{isFirst}}#{{isLast}}#{{isEven}}#{{isOdd}}#{{comment.message}} <span
                             class="badge badge-secondary badge-pill">{{comment.date|date:"HH:mm:ss"}} </span>
-                    </li>
+                    </li> -->
                     <!--     <li *ngIf="isEven"  
                          [ngStyle]="{color:colors.even}"
                         class="list-group-item d-flex justify-content-between align-items-center">
@@ -47,7 +55,7 @@
                         {{i}}#{{isFirst}}#{{isLast}}#{{isEven}}#{{isOdd}}#{{comment.message}} <span class="badge badge-secondary badge-pill">{{comment.date|date:"HH:mm:ss"}} </span>
                     </li> -->
                 </ng-container>
-
+            
             </ul>
         </ng-template>
         <ng-template #noComments>
