@@ -1,0 +1,7 @@
+<div>
+    <button class="btn btn-success" [disabled]="isAuth" (click)="onSignin()">SignIn</button>
+</div>
+<div class="mt-4">
+    <button class="btn btn-danger" [disabled]="!isAuth" (click)="onSignout()">SignOut</button>
+</div>
+
