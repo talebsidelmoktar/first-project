@@ -1,5 +1,5 @@
 export class Contact {
-    id!:number;
+    id!:any;
     name!:string;
     email!:string;
     website!:string;

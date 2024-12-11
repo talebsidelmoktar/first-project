@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { Contact } from '../shared/contact';
 import { ContactService } from '../services/contact.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -14,11 +14,13 @@ export class ContactDetailComponent implements OnInit {
    idContact:any
    constructor(private contactService : ContactService,
               private route:ActivatedRoute,
-              private router:Router ){}
+              private router:Router,
+              @Inject('BaseURL')public baseUrl:string ){}
    ngOnInit(): void {
     // this.idContact=this.route.snapshot.params["id"];
      this.route.paramMap.subscribe(mpds=>this.idContact=mpds.get("id"))
-     this.contact=this.contactService.getContactById(this.idContact);
+    // this.contact=this.contactService.getContactById(this.idContact);
+     this.contactService.getContactById(this.idContact).subscribe({next:(contact)=>this.contact=contact});
   }
 
   onContacts(){

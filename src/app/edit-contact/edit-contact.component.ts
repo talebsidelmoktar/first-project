@@ -16,18 +16,23 @@ export class EditContactComponent {
 
   onSubmit(form:NgForm){
     let contact:Contact={
-      id: -1,
+      id: null,
       //name:form.value['name']
       name: form.value.name,
       email: form.value.email,
       website: form.value.website,
       projects: [form.value.projects],
       featured: false,
-      image: '../../assets/images/default-avatar.jpg'
+      image: 'images/default-avatar.jpg'
     }
-     contact=this.contactService.addContact(contact);
+    // contact=this.contactService.addContact(contact);
+    this.contactService.addContact(contact).subscribe({
+      next: (contact) => { this.router.navigateByUrl("/contacts/" + contact.id) },
+      error: (error) => { console.log("add contact failed!") },
+      complete: () => console.log("end")
+    });
     // this.router.navigateByUrl("/contacts")
-     this.router.navigateByUrl("/contacts/"+contact.id);
+   //  this.router.navigateByUrl("/contacts/"+contact.id);
   }
   onContacts(){
     this.router.navigateByUrl("/contacts")
