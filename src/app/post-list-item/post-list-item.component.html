@@ -1,0 +1,10 @@
+<div class="card my-3">
+    <div class="card-body">
+      <h4 class="card-title">{{ post.title }}</h4>
+      <p class="card-text">{{ post.content }}</p>
+      <p class="text-muted">Created on: {{ post.created_at | date }}</p>
+      <p>Love it: {{ post.loveIts }}</p>
+      <button class="btn btn-success" (click)="onLoveIt()">Love It</button>
+    </div>
+  </div>
+  

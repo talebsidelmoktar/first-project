@@ -15,6 +15,8 @@ import { ContactDetailComponent } from './contact-detail/contact-detail.componen
 import { EditContactComponent } from './edit-contact/edit-contact.component';
 import { BaseURL } from './shared/baseurl';
 import {HttpClientModule} from '@angular/common/http';
+import { PostListItemComponent } from './post-list-item/post-list-item.component';
+import { PostListComponent } from './post-list/post-list.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import {HttpClientModule} from '@angular/common/http';
     SigninComponent,
     NotFoundComponent,
     ContactDetailComponent,
-    EditContactComponent
+    EditContactComponent,
+    PostListComponent,
+    PostListItemComponent
   ],
   imports: [
     BrowserModule,
